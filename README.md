@@ -48,12 +48,12 @@ Copyright (c) 2016 Daisuke Taniwaki. See [LICENSE](LICENSE) for details.
 
 [gem-image]:   https://badge.fury.io/rb/url_regexp.svg
 [gem-link]:    http://badge.fury.io/rb/url_regexp
-[build-image]: https://secure.travis-ci.org/dtaniwaki/url_regexp.png?branch=master
+[build-image]: https://secure.travis-ci.org/dtaniwaki/url_regexp.svg?branch=master
 [build-link]:  http://travis-ci.org/dtaniwaki/url_regexp?branch=master
 [deps-image]:  https://gemnasium.com/dtaniwaki/url_regexp.svg?branch=master
 [deps-link]:   https://gemnasium.com/dtaniwaki/url_regexp?branch=master
-[cov-image]:   https://coveralls.io/repos/dtaniwaki/url_regexp/badge.png?branch=master
-[cov-link]:    https://coveralls.io/r/dtaniwaki/url_regexp?branch=master
-[gpa-image]:   https://codeclimate.com/github/dtaniwaki/url_regexp.png?branch=master
+[cov-image]:   https://coveralls.io/repos/github/dtaniwaki/url_regexp/badge.svg?branch=master
+[cov-link]:    https://coveralls.io/github/dtaniwaki/url_regexp?branch=master
+[gpa-image]:   https://codeclimate.com/github/dtaniwaki/url_regexp.svg?branch=master
 [gpa-link]:    https://codeclimate.com/github/dtaniwaki/url_regexp?branch=master
 
