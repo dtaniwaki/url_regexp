@@ -8,6 +8,9 @@
 /spec/reports/
 /tmp/
 
+## Gem
+*.gem
+
 ## Misc
 Gemfile.lock
 gemfiles/*.lock
