@@ -24,11 +24,11 @@ module UrlRegexp
     end
 
     def to_regexp_s
-      s = if 5 < size
+      if 5 < size
         "([^#?]*)"
       elsif 1 < size
         children_paths = map(&:paths).reduce { |s1, s2| s1 & s2 }
-        if children_paths.size == 1
+        if children_paths.size == 1 && all? { |p| !p.path_end? }
           "(#{map(&:label).join("|")})/#{children_paths.to_regexp_s}"
         else
           "(#{map(&:to_regexp_s).join("|")})"

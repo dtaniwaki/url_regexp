@@ -13,6 +13,10 @@ module UrlRegexp
       @path_end = false
     end
 
+    def path_end?
+      @path_end
+    end
+
     def hash
       [@label, @paths.hash].hash
     end
