@@ -20,7 +20,7 @@ module UrlRegexp
     end
 
     def to_regexp_s
-      "^#{@scheme.to_regexp_s}#{@host.to_regexp_s}#{@path.to_regexp_s}#{@query.to_regexp_s}(#|$)"
+      "^#{@scheme.to_regexp_s}#{@host.to_regexp_s}#{@path.to_regexp_s}#{@query.to_regexp_s}(#|$)".sub('(\\?.*)?(#|$)', '([?#]|$)')
     end
   end
 end

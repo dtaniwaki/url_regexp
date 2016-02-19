@@ -24,10 +24,10 @@ e.g.
 root = UrlRegexp::Root.new
 root.append('http://www.example.com/foo/bar')
 root.to_regexp
-# => /^http:\/\/www\.example\.com\/foo\/bar(\?.*)?(#|$)/
+# => /^http:\/\/www\.example\.com\/foo\/bar([?#]|$)/
 root.append('http://www.example.com/foo/bar/wow')
 root.to_regexp
-# => /^http:\/\/www\.example\.com\/foo\/bar(\/wow)?(\?.*)?(#|$)/
+# => /^http:\/\/www\.example\.com\/foo\/bar(\/wow)?([?#]|$)/
 ```
 
 You can set the options globally and locally. Locally set option overwrites the one globally set. Just add any settings necessary for your mailers from the list below.
