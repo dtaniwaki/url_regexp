@@ -28,6 +28,12 @@ root.to_regexp
 root.append('http://www.example.com/foo/bar/wow')
 root.to_regexp
 # => /^http:\/\/www\.example\.com\/foo\/bar(\/wow)?([?#]|$)/
+root.append('http://www.example.com/boo/bar')
+root.to_regexp
+# => /^http:\/\/www\.example\.com\/(foo\/bar(\/wow)?|boo\/bar)([?#]|$)/
+root.append('http://www.example.com/boo/bar/wow')
+root.to_regexp
+# => /^http:\/\/www\.example\.com\/(foo|boo)\/bar(\/wow)?([?#]|$)/
 ```
 
 You can set the options globally and locally. Locally set option overwrites the one globally set. Just add any settings necessary for your mailers from the list below.

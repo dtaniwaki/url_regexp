@@ -13,8 +13,17 @@ module UrlRegexp
       @path_end = false
     end
 
+    def ==(other)
+      self.class == other.class &&
+        @label == other.label &&
+        @paths == other.paths &&
+        @path_end == other.path_end
+    end
+
+    alias eql? ==
+
     def hash
-      [@label, @paths.hash].hash
+      [@label, @paths, @path_end].hash
     end
 
     def append(path)

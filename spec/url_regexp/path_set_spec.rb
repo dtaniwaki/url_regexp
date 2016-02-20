@@ -57,6 +57,19 @@ describe UrlRegexp::PathSet do
         subject.append(p2)
         expect(subject.to_regexp_s).to eq '(foo|bar)/wow'
       end
+      context 'with multiple paths' do
+        it 'returns regexp string' do
+          parent = UrlRegexp::Path.new
+          p1 = UrlRegexp::Path.new('foo', parent)
+          p1.append('wow/yay')
+          p2 = UrlRegexp::Path.new('bar', parent)
+          p2.append('wow/yay')
+
+          subject.append(p1)
+          subject.append(p2)
+          expect(subject.to_regexp_s).to eq '(foo|bar)/wow/yay'
+        end
+      end
       context 'include path_end' do
         it 'returns regexp string' do
           parent = UrlRegexp::Path.new

@@ -1,9 +1,5 @@
 module UrlRegexp
   class Node
-    def eql?(other)
-      hash == other.hash
-    end
-
     def append(_)
       raise NotImplementedError
     end
