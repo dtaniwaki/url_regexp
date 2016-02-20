@@ -14,3 +14,5 @@ Metrics/MethodLength:
   Max: 30
 Documentation:
   Enabled: false
+Style/SignalException:
+  EnforcedStyle: only_raise

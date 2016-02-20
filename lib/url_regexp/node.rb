@@ -5,11 +5,11 @@ module UrlRegexp
     end
 
     def append(_)
-      fail NotImplementedError
+      raise NotImplementedError
     end
 
     def to_regexp_s
-      fail NotImplementedError
+      raise NotImplementedError
     end
 
     def to_regexp
