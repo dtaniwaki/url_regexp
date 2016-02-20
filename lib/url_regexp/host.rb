@@ -11,11 +11,10 @@ module UrlRegexp
     def to_regexp_s
       hosts = @hosts.map { |h| Regexp.quote(h.to_s) }
       if 1 < hosts.size
-        hosts = "(#{hosts.join('|')})"
+        "(#{hosts.join('|')})"
       else
-        hosts = hosts[0]
+        hosts[0]
       end
-      hosts
     end
   end
 end

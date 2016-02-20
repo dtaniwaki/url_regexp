@@ -1,14 +1,14 @@
-require "rubygems"
-require "rspec"
+require 'rubygems'
+require 'rspec'
 require 'simplecov'
 require 'coveralls'
 Coveralls.wear!
 
 resultset_path = SimpleCov::ResultMerger.resultset_path
-FileUtils.rm resultset_path if File.exists? resultset_path
+FileUtils.rm resultset_path if File.exist? resultset_path
 SimpleCov.use_merging true
 SimpleCov.at_exit do
-  SimpleCov.command_name "fork-#{$$}"
+  SimpleCov.command_name "fork-#{$PID}"
   SimpleCov.result.format!
 end
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
@@ -21,7 +21,7 @@ end
 
 require 'url_regexp'
 
-Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each {|f| require f }
+Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
 end

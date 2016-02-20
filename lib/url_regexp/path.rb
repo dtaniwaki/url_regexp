@@ -13,10 +13,6 @@ module UrlRegexp
       @path_end = false
     end
 
-    def path_end?
-      @path_end
-    end
-
     def hash
       [@label, @paths.hash].hash
     end
@@ -24,22 +20,21 @@ module UrlRegexp
     def append(path)
       if path == ''
         @paths.append(Path.new('', self))
+      elsif @parent.nil?
+        _, label, rest = path.split('/', 3)
       else
-        if @parent.nil?
-          _, label, rest = path.split('/', 3)
-        else
-          label, rest = path.split('/', 2)
+        label, rest = path.split('/', 2)
+      end
+      if label
+        p = @paths.find { |pp| pp.label == label }
+        if p.nil?
+          p = Path.new(label, self)
+          @paths.append(p)
         end
-        if label
-          unless p = @paths.find { |_p| _p.label == label }
-            p = Path.new(label, self)
-            @paths.append(p)
-          end
-          if rest.nil?
-            p.path_end = true
-          else
-            p.append(rest)
-          end
+        if rest.nil?
+          p.path_end = true
+        else
+          p.append(rest)
         end
       end
     end

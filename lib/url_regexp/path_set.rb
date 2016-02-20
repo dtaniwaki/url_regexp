@@ -25,18 +25,16 @@ module UrlRegexp
 
     def to_regexp_s
       if 5 < size
-        "([^#?]*)"
+        '([^#?]*)'
       elsif 1 < size
-        children_paths = map(&:paths).reduce { |s1, s2| s1 & s2 }
-        if children_paths.size == 1 && all? { |p| !p.path_end? }
-          "(#{map(&:label).join("|")})/#{children_paths.to_regexp_s}"
+        children_paths = map(&:paths).reduce { |a, e| a & e }
+        if children_paths.size == 1 && all? { |p| !p.path_end }
+          "(#{map(&:label).join('|')})/#{children_paths.to_regexp_s}"
         else
-          "(#{map(&:to_regexp_s).join("|")})"
+          "(#{map(&:to_regexp_s).join('|')})"
         end
       elsif 1 == size
         to_a.first.to_regexp_s
-      else
-        nil
       end
     end
 

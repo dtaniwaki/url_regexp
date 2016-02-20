@@ -4,12 +4,12 @@ module UrlRegexp
       hash == other.hash
     end
 
-    def append(node)
-      raise NotImplementedError
+    def append(_)
+      fail NotImplementedError
     end
 
     def to_regexp_s
-      raise NotImplementedError
+      fail NotImplementedError
     end
 
     def to_regexp

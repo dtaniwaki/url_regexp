@@ -1,0 +1,16 @@
+AllCops:
+  Include:
+    - 'lib/**/*'
+    - 'spec/**/*'
+Metrics/AbcSize:
+  Max: 32
+Metrics/LineLength:
+  Max: 99
+Metrics/CyclomaticComplexity:
+  Max: 20
+Metrics/PerceivedComplexity:
+  Max: 20
+Metrics/MethodLength:
+  Max: 30
+Documentation:
+  Enabled: false
