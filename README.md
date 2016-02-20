@@ -32,6 +32,14 @@ root.to_regexp
 
 You can set the options globally and locally. Locally set option overwrites the one globally set. Just add any settings necessary for your mailers from the list below.
 
+## Test
+
+```bash
+bundle exec rake
+```
+
+It will execute `rspec` and `rubocop`.
+
 ## Contributing
 
 1. Fork it
