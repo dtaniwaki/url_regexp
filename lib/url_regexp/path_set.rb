@@ -59,8 +59,8 @@ module UrlRegexp
           if regexps.size > 1
             base = regexps[0]
             base.split(//).each do |c|
-              _match = match + c
-              break unless regexps[1..-1].all? { |r| r.start_with? _match }
+              tmp = match + c
+              break unless regexps[1..-1].all? { |r| r.start_with? tmp }
               match = _match
             end
             regexps = regexps.map { |r| r[match.size..-1] }

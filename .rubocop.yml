@@ -4,7 +4,7 @@ AllCops:
     - 'lib/**/*'
     - 'spec/**/*'
 Metrics/AbcSize:
-  Max: 32
+  Max: 40
 Metrics/LineLength:
   Max: 99
 Metrics/CyclomaticComplexity:
@@ -13,6 +13,8 @@ Metrics/PerceivedComplexity:
   Max: 20
 Metrics/MethodLength:
   Max: 30
+Metrics/BlockNesting:
+  Max: 4
 Documentation:
   Enabled: false
 Style/SignalException:
