@@ -21,6 +21,14 @@ describe UrlRegexp::PathSet do
         subject.append(UrlRegexp::Path.new('bar'))
         expect(subject.to_regexp_s).to eq '(foo|bar)'
       end
+      context 'same prefix paths' do
+        it 'returns regexp string' do
+          subject.append(UrlRegexp::Path.new('bar'))
+          subject.append(UrlRegexp::Path.new('bal'))
+          subject.append(UrlRegexp::Path.new('baz'))
+          expect(subject.to_regexp_s).to eq 'ba(r|l|z)'
+        end
+      end
     end
     context 'massive paths' do
       context '6 paths' do

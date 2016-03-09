@@ -54,7 +54,18 @@ module UrlRegexp
         if children_paths.size == 1 && all? { |p| !p.path_end }
           "(#{map(&:label).join('|')})/#{children_paths.to_regexp_s}"
         else
-          "(#{map(&:to_regexp_s).join('|')})"
+          regexps = map(&:to_regexp_s)
+          match = ''
+          if regexps.size > 1
+            base = regexps[0]
+            base.split(//).each do |c|
+              _match = match + c
+              break unless regexps[1..-1].all? { |r| r.start_with? _match }
+              match = _match
+            end
+            regexps = regexps.map { |r| r[match.size..-1] }
+          end
+          "#{match}(#{regexps.join('|')})"
         end
       elsif 1 == size
         to_a.first.to_regexp_s
