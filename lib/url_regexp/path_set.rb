@@ -61,7 +61,7 @@ module UrlRegexp
             base.split(//).each do |c|
               tmp = match + c
               break unless regexps[1..-1].all? { |r| r.start_with? tmp }
-              match = _match
+              match = tmp
             end
             regexps = regexps.map { |r| r[match.size..-1] }
           end
