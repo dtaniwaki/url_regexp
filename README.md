@@ -49,7 +49,7 @@ root.to_regexp
 # => /^http:\/\/www\.example\.com\/foo([?#]|$)/
 root.append('http://www.example.com/bar')
 root.to_regexp
-# => /^http:\/\/www\.example\.com\/bar([?#]|$)/
+# => /^http:\/\/www\.example\.com\/(foo|bar)([?#]|$)/
 root.append('http://www.example.com/wow')
 root.to_regexp
 # => /^http:\/\/www\.example\.com\/([^#?]*)([?#]|$)/
