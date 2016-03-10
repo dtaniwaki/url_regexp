@@ -1,7 +1,8 @@
 module UrlRegexp
   class Host < Node
-    def initialize
+    def initialize(options = {})
       @hosts = Set.new
+      @options = options
     end
 
     def append(host)

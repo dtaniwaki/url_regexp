@@ -1,7 +1,8 @@
 module UrlRegexp
   class Query
-    def initialize
+    def initialize(options = {})
       @queries = []
+      @options = options
     end
 
     def append(query)

@@ -52,6 +52,26 @@ describe UrlRegexp::PathSet do
           expect(subject.to_regexp_s).to eq '([^#?]*)'
         end
       end
+      context 'with wildcard_threshold option' do
+        subject { described_class.new(nil, wildcard_threshold: 3) }
+        context 'equal length' do
+          it 'returns regexp string' do
+            subject.append(UrlRegexp::Path.new('a'))
+            subject.append(UrlRegexp::Path.new('b'))
+            subject.append(UrlRegexp::Path.new('c'))
+            expect(subject.to_regexp_s).to eq '(a|b|c)'
+          end
+        end
+        context 'more than the value' do
+          it 'returns regexp string' do
+            subject.append(UrlRegexp::Path.new('a'))
+            subject.append(UrlRegexp::Path.new('b'))
+            subject.append(UrlRegexp::Path.new('c'))
+            subject.append(UrlRegexp::Path.new('d'))
+            expect(subject.to_regexp_s).to eq '([^#?]*)'
+          end
+        end
+      end
     end
     context 'merge paths' do
       it 'returns regexp string' do

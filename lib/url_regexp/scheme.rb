@@ -2,8 +2,9 @@ require_relative './node'
 
 module UrlRegexp
   class Scheme < Node
-    def initialize
+    def initialize(options = {})
       @schemes = Set.new
+      @options = options
     end
 
     def append(scheme)

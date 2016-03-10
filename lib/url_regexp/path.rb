@@ -6,10 +6,11 @@ module UrlRegexp
     attr_reader :label, :paths
     attr_accessor :path_end
 
-    def initialize(label = nil, parent = nil)
+    def initialize(label = nil, parent = nil, options = {})
       @label = label
       @parent = parent
-      @paths = PathSet.new
+      @options = options
+      @paths = PathSet.new(nil, @options)
       @path_end = false
     end
 
@@ -28,7 +29,7 @@ module UrlRegexp
 
     def append(path)
       if path == ''
-        @paths.append(Path.new('', self))
+        @paths.append(Path.new('', self, @options))
       elsif @parent.nil?
         _, label, rest = path.split('/', 3)
       else
@@ -37,7 +38,7 @@ module UrlRegexp
       if label
         p = @paths.find { |pp| pp.label == label }
         if p.nil?
-          p = Path.new(label, self)
+          p = Path.new(label, self, @options)
           @paths.append(p)
         end
         if rest.nil?

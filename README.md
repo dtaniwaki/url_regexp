@@ -36,7 +36,24 @@ root.to_regexp
 # => /^http:\/\/www\.example\.com\/(foo|boo)\/bar(\/wow)?([?#]|$)/
 ```
 
-You can set the options globally and locally. Locally set option overwrites the one globally set. Just add any settings necessary for your mailers from the list below.
+## Options
+
+### wildcard_threshold (default: 5)
+
+You can change the threshold to group paths as wildcard.
+
+```ruby
+root = UrlRegexp::Root.new(wildcard_threshold: 2)
+root.append('http://www.example.com/foo')
+root.to_regexp
+# => /^http:\/\/www\.example\.com\/foo([?#]|$)/
+root.append('http://www.example.com/bar')
+root.to_regexp
+# => /^http:\/\/www\.example\.com\/bar([?#]|$)/
+root.append('http://www.example.com/wow')
+root.to_regexp
+# => /^http:\/\/www\.example\.com\/([^#?]*)([?#]|$)/
+```
 
 ## Test
 

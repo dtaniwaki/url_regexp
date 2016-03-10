@@ -15,8 +15,10 @@ module UrlRegexp
 
     def_delegators :@set, :size, *Enumerable.public_instance_methods(false)
 
-    def initialize(set = Set.new)
-      @set = set
+    def initialize(set = nil, options = {})
+      @set = set || Set.new
+      @options = options
+      @wildcard_threshold = options[:wildcard_threshold] || 5
     end
 
     def append(path)
@@ -35,11 +37,11 @@ module UrlRegexp
     end
 
     def &(other)
-      self.class.new(@set & other.set)
+      self.class.new(@set & other.set, @options)
     end
 
     def |(other)
-      self.class.new(@set & other.set)
+      self.class.new(@set & other.set, @options)
     end
 
     def include?(path)
@@ -47,7 +49,7 @@ module UrlRegexp
     end
 
     def to_regexp_s
-      if 5 < size
+      if @wildcard_threshold < size
         '([^#?]*)'
       elsif 1 < size
         children_paths = map(&:paths).reduce { |a, e| a & e }

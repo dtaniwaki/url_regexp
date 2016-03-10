@@ -4,11 +4,12 @@ end
 
 module UrlRegexp
   class Root < Node
-    def initialize
-      @scheme = Scheme.new
-      @host = Host.new
-      @path = Path.new
-      @query = Query.new
+    def initialize(options = {})
+      @scheme = Scheme.new(options)
+      @host = Host.new(options)
+      @path = Path.new(nil, nil, options)
+      @query = Query.new(options)
+      @options = options
     end
 
     def append(url)
