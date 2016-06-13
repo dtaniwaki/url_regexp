@@ -3,7 +3,7 @@ require_relative './node'
 module UrlRegexp
   class Set < ::Set
     def include?(o)
-      # Comparing keys directly is faster than rehash everytime for few items
+      # Comparing keys directly is faster than rehash every time for few items
       # @hash.rehash
       # super(o)
       @hash.keys.include?(o)
