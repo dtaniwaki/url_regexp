@@ -35,17 +35,17 @@ module UrlRegexp
       else
         label, rest = path.split('/', 2)
       end
-      if label
-        p = @paths.find { |pp| pp.label == label }
-        if p.nil?
-          p = Path.new(label, self, @options)
-          @paths.append(p)
-        end
-        if rest.nil?
-          p.path_end = true
-        else
-          p.append(rest)
-        end
+      return if label.nil?
+
+      p = @paths.find { |pp| pp.label == label }
+      if p.nil?
+        p = Path.new(label, self, @options)
+        @paths.append(p)
+      end
+      if rest.nil?
+        p.path_end = true
+      else
+        p.append(rest)
       end
     end
 

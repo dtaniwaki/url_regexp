@@ -6,7 +6,7 @@ AllCops:
 Metrics/AbcSize:
   Max: 40
 Metrics/LineLength:
-  Max: 99
+  Max: 120
 Metrics/CyclomaticComplexity:
   Max: 20
 Metrics/PerceivedComplexity:
@@ -15,7 +15,20 @@ Metrics/MethodLength:
   Max: 30
 Metrics/BlockNesting:
   Max: 4
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
 Documentation:
   Enabled: false
 Style/SignalException:
   EnforcedStyle: only_raise
+RSpec/NamedSubject:
+  Enabled: false
+RSpec/ExampleLength:
+  Max: 20
+RSpec/MultipleExpectations:
+  Max: 10
+RSpec/NestedGroups:
+  Max: 5
+RSpec/SubjectStub:
+  Enabled: false
