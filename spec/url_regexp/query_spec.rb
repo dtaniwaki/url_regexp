@@ -35,5 +35,13 @@ describe UrlRegexp::Query do
         expect(regexp_s).to eq '(\\?(.*&)?a=1(&.*)?)?'
       end
     end
+    context 'with only empty queries' do
+      it 'generates regexp' do
+        subject.append('')
+        subject.append('')
+        regexp_s = subject.to_regexp_s
+        expect(regexp_s).to eq '(\\?.*)?'
+      end
+    end
   end
 end
